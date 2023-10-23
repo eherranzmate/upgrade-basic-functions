@@ -1,6 +1,7 @@
-/* Iteración 1 */
+// Iteración 1 
 
-function sum(numberOne, numberTwo){
+
+function sum(numberOne, numberTwo) {
     if(numberOne > numberTwo){
         return numberOne;
     } else {
@@ -8,68 +9,72 @@ function sum(numberOne, numberTwo){
     }
 }
 
-/* Iteración 2 */
+
+// Iteración 2 
 
 const avengers = ['Hulk', 'Thor', 'IronMan', 'Captain A.', 
 'Spiderman', 'Captain M.'];
 
-function findLongestWord(array) {
-    let longestWord = array[0];
-    for(let i = 0; i < array.length; i++) {
-        if (array[i].length > longestWord.length) {
-            longestWord = array[i];
-        }   
+function findLongestWord(wordList) {
+    let longestWord = '';
+    for(let word of wordList) {
+        if(word.length > longestWord.length) {
+            longestWord = word;
+        }      
     }
-    return console.log(longestWord);
+    return (longestWord)
 }
 
+console.log(findLongestWord(avengers));
 
-findLongestWord(avengers);
 
 /* Iteración 3 */
 
 const numbers = [1, 2, 3, 5, 45, 37, 58];
 
-function sumAll(array) {
-    let sumNumbers = 0;
-    for(i = 0; i < array.length; i++){
-        sumNumbers += array[i];
-    
+function sumAll(numberList) {
+    let total = 0;
+    for(num of numberList) {
+        total += num;
     }
-  return console.log(sumNumbers);
+    return total;
 }
 
-sumAll(numbers);
+console.log(sumAll(numbers))
 
-/* Iteración 4 */
+
+
+// Iteración 4 
 
 const numbers2 = [12, 21, 38, 5, 45, 37, 6];
 
-function average(array) {
-    let averageNumbers = 0;
-    for(i = 0; i < array.length; i++){
-        averageNumbers += array[i] / array.length;
-    }
-    return console.log(averageNumbers);
+function average(numberList) {
+    let total = sumAll(numberList);
+
+    return total / numberList.length;
 }
 
-average(numbers2)
+console.log (average(numbers2));
 
-/* Iteración 5 */
+
+// Iteración 5 
 
 const mixedElements = [6, 1, 'Rayo', 1, 'vallecano', '10', 'upgrade', 8, 'hub'];
 
-function averageWord(array) {
-    let sumMixed = 0;
-    for(i = 0; i < array.length; i++){
-        if(array[i] === 'string'){
-            sumMixed += array[i].length / array.length;
+function averageWord(mixedList) {
+    let total = 0;
+    for (item of mixedList) {
+            if(typeof item === 'string') {
+                total += item.length;
+        } else if (typeof item === 'number') {
+            total += item;
         }
     }
-  return console.log(sumMixed)
+    return total;
 }
 
-console.log(mixedElements);
+console.log(averageWord(mixedElements))
+    
 
 /* Iteración 6 */
 
@@ -86,17 +91,18 @@ const duplicates = [
     'pasta',
     'soda'
   ];
-  function removeDuplicates(array) {
+  function removeDuplicates(wordList) {
     let noRepeat = [];
-    for (i = 0; i < array.length; i++) {
-        if(!noRepeat.includes(array[i])) {
-            noRepeat.push(array[i]);
+    for(word of wordList) {
+        if(!noRepeat.includes(word)){
+             noRepeat.push(word)
         }
     }
-    return console.log(noRepeat);
+    return noRepeat;
   }
 
-removeDuplicates(duplicates);
+  console.log(removeDuplicates(duplicates));
+
 
 /* Iteración 7 */
 
@@ -113,17 +119,25 @@ const nameFinder = [
     'Jessica',
     'Marc'
   ];
-  function finderName(array, value) {
-    for(i = 0; i < array.length; i++) {
-        if(array[i] === value){
-            return console.log (true, i);
-        } 
+
+function finderName(wordList, value) {
+    const nameIndex = wordList.indexOf(value) 
+    if (nameIndex === -1){
+        return false;
+    } else {
+        return {
+            ToV:true,
+            index: nameIndex,
+        }
     }
-    return console.log (false)
-  }
+}
+    
+    
+  
 
-  finderName(nameFinder, 'Jessica');
-
+   
+  console.log(finderName(nameFinder, 'Clint'));
+   
 
 /* Iteración 8 */
 
@@ -141,9 +155,23 @@ const counterWords = [
     'code'
   ];
 
-  function repeatCounter(array) {
-    for(i = 0; i < array.length; i++)
-        if ()
+  
+function repeatCounter(wordList) {
+    let elementCounter = {};
+    for(element of wordList){
+       if(!elementCounter.hasOwnProperty(element)) {
+            elementCounter[element] = 0;
+        }
+
+        elementCounter[element] +=1;
+    }
+
+    return elementCounter;
+        
+}
+   
+  
+  console.log(repeatCounter(counterWords));
 
     
-  }
+  
